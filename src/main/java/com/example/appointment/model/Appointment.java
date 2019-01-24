@@ -14,24 +14,39 @@ import java.util.Date;
 @Entity
 public class Appointment {
 
+    private enum Status {Available, Booked};
+
     private @Id @GeneratedValue Long id;
     private Timestamp created_at;
     private Date appointment_date;
-    private Time appointment_duration;
+    private Time appointment_start_time;
+    private Time appointment_end_time;
     private String name_of_doctor;
-    private Enum status;
+    private Status selectedStatus = Status.Available;
     private BigDecimal price;
 
     public Appointment() {
 
     }
 
-    public Appointment(Timestamp created_at, Date appointment_date, Time appointment_duration, String name_of_doctor, Enum status, BigDecimal price) {
+    public Appointment(String name_of_doctor, Status selectedStatus, BigDecimal price) {
+        this.name_of_doctor = name_of_doctor;
+        this.selectedStatus = selectedStatus;
+        this.price = price;
+    }
+
+    public Appointment(String name_of_doctor, BigDecimal price) {
+        this.name_of_doctor = name_of_doctor;
+        this.price = price;
+    }
+
+    public Appointment(Timestamp created_at, Date appointment_date, Time appointment_start_time, Time appointment_end_time, String name_of_doctor, Status selectedStatus, BigDecimal price) {
         this.created_at = created_at;
         this.appointment_date = appointment_date;
-        this.appointment_duration = appointment_duration;
+        this.appointment_start_time = appointment_start_time;
+        this.appointment_end_time = appointment_end_time;
         this.name_of_doctor = name_of_doctor;
-        this.status = status;
+        this.selectedStatus = selectedStatus;
         this.price = price;
     }
 
@@ -59,12 +74,20 @@ public class Appointment {
         this.appointment_date = appointment_date;
     }
 
-    public Time getAppointment_duration() {
-        return appointment_duration;
+    public Time getAppointment_start_time() {
+        return appointment_start_time;
     }
 
-    public void setAppointment_duration(Time appointment_duration) {
-        this.appointment_duration = appointment_duration;
+    public void setAppointment_start_time(Time appointment_start_time) {
+        this.appointment_start_time = appointment_start_time;
+    }
+
+    public Time getAppointment_end_time() {
+        return appointment_end_time;
+    }
+
+    public void setAppointment_end_time(Time appointment_end_time) {
+        this.appointment_end_time = appointment_end_time;
     }
 
     public String getName_of_doctor() {
@@ -75,12 +98,12 @@ public class Appointment {
         this.name_of_doctor = name_of_doctor;
     }
 
-    public Enum getStatus() {
-        return status;
+    public Status getSelectedStatus() {
+        return selectedStatus;
     }
 
-    public void setStatus(Enum status) {
-        this.status = status;
+    public void setSelectedStatus(Status selectedStatus) {
+        this.selectedStatus = selectedStatus;
     }
 
     public BigDecimal getPrice() {
