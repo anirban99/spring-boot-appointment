@@ -24,6 +24,11 @@ public class AppointmentServiceImplementation implements AppointmentService {
     }
 
     @Override
+    public Optional<Appointment> findOneByDoctorName(String name) {
+        return appointmentRepository.findByDoctorName(name);
+    }
+
+    @Override
     public List<Appointment> findAll() {
         return appointmentRepository.findAll();
     }

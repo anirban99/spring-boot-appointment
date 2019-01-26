@@ -21,31 +21,35 @@ public class Appointment {
     private Date appointment_date;
     private Time appointment_start_time;
     private Time appointment_end_time;
-    private String name_of_doctor;
-    private Status selectedStatus = Status.Available;
+//    private String name_of_doctor;
+    private String doctorName;
+    private Status selectedStatus = Status.Booked;
     private BigDecimal price;
 
     public Appointment() {
 
     }
 
-    public Appointment(String name_of_doctor, Status selectedStatus, BigDecimal price) {
-        this.name_of_doctor = name_of_doctor;
+    public Appointment(String doctorName, Status selectedStatus, BigDecimal price) {
+//        this.name_of_doctor = name_of_doctor;
+        this.doctorName = doctorName;
         this.selectedStatus = selectedStatus;
         this.price = price;
     }
 
-    public Appointment(String name_of_doctor, BigDecimal price) {
-        this.name_of_doctor = name_of_doctor;
+    public Appointment(String doctorName, BigDecimal price) {
+//        this.name_of_doctor = name_of_doctor;
+        this.doctorName = doctorName;
         this.price = price;
     }
 
-    public Appointment(Timestamp created_at, Date appointment_date, Time appointment_start_time, Time appointment_end_time, String name_of_doctor, Status selectedStatus, BigDecimal price) {
+    public Appointment(Timestamp created_at, Date appointment_date, Time appointment_start_time, Time appointment_end_time, String doctorName, Status selectedStatus, BigDecimal price) {
         this.created_at = created_at;
         this.appointment_date = appointment_date;
         this.appointment_start_time = appointment_start_time;
         this.appointment_end_time = appointment_end_time;
-        this.name_of_doctor = name_of_doctor;
+//        this.name_of_doctor = name_of_doctor;
+        this.doctorName = doctorName;
         this.selectedStatus = selectedStatus;
         this.price = price;
     }
@@ -91,11 +95,13 @@ public class Appointment {
     }
 
     public String getName_of_doctor() {
-        return name_of_doctor;
+//        return name_of_doctor;
+        return doctorName;
     }
 
-    public void setName_of_doctor(String name_of_doctor) {
-        this.name_of_doctor = name_of_doctor;
+    public void setName_of_doctor(String doctorName) {
+//        this.name_of_doctor = name_of_doctor;
+        this.doctorName = doctorName;
     }
 
     public Status getSelectedStatus() {

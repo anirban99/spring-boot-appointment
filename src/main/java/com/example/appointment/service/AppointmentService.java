@@ -10,6 +10,8 @@ public interface AppointmentService {
 
     Optional<Appointment> findOneById(Long userId);
 
+    Optional<Appointment> findOneByDoctorName(String name);
+
     List<Appointment> findAll();
 
     Appointment create(Appointment newUser);

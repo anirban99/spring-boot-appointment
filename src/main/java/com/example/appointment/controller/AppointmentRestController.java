@@ -28,6 +28,12 @@ public class AppointmentRestController {
         return appointmentService.findOneById(userId);
     }
 
+    /** GET request to return specific users **/
+    @RequestMapping(path = "/doctors/{name}", method = RequestMethod.GET)
+    public Optional<Appointment> findOneByDoctorName(@PathVariable String name) {
+        return appointmentService.findOneByDoctorName(name);
+    }
+
     /** GET request to return all users **/
     @RequestMapping(path = "/users", method = RequestMethod.GET)
     List<Appointment> findAll() {
