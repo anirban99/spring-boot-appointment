@@ -8,49 +8,38 @@ import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
 public class Appointment {
 
-    private enum Status {Available, Booked};
+    private enum availableStatus {Available, Booked};
 
     private @Id @GeneratedValue Long id;
-    private Timestamp created_at;
-    private Date appointment_date;
-    private Time appointment_start_time;
-    private Time appointment_end_time;
-//    private String name_of_doctor;
-    private String doctorName;
-    private Status selectedStatus = Status.Booked;
+    private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
+    private LocalDate appointmentDate;
+    private Time appointmentStartTime;
+    private Time appointmentEndTime;
+    private String nameOfDoctor;
+    private Appointment.availableStatus status = Appointment.availableStatus.Booked;
     private BigDecimal price;
 
     public Appointment() {
 
     }
 
-    public Appointment(String doctorName, Status selectedStatus, BigDecimal price) {
-//        this.name_of_doctor = name_of_doctor;
-        this.doctorName = doctorName;
-        this.selectedStatus = selectedStatus;
+    public Appointment(LocalDate appointmentDate, Time appointmentStartTime, Time appointmentEndTime, String nameOfDoctor, BigDecimal price) {
+        this.appointmentDate = appointmentDate;
+        this.appointmentStartTime = appointmentStartTime;
+        this.appointmentEndTime = appointmentEndTime;
+        this.nameOfDoctor = nameOfDoctor;
         this.price = price;
     }
 
-    public Appointment(String doctorName, BigDecimal price) {
-//        this.name_of_doctor = name_of_doctor;
-        this.doctorName = doctorName;
-        this.price = price;
-    }
-
-    public Appointment(Timestamp created_at, Date appointment_date, Time appointment_start_time, Time appointment_end_time, String doctorName, Status selectedStatus, BigDecimal price) {
-        this.created_at = created_at;
-        this.appointment_date = appointment_date;
-        this.appointment_start_time = appointment_start_time;
-        this.appointment_end_time = appointment_end_time;
-//        this.name_of_doctor = name_of_doctor;
-        this.doctorName = doctorName;
-        this.selectedStatus = selectedStatus;
+    public Appointment(LocalDate appointmentDate, String nameOfDoctor, BigDecimal price) {
+        this.appointmentDate = appointmentDate;
+        this.nameOfDoctor = nameOfDoctor;
         this.price = price;
     }
 
@@ -62,54 +51,52 @@ public class Appointment {
         this.id = id;
     }
 
-    public Timestamp getCreated_at() {
-        return created_at;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(Timestamp created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Date getAppointment_date() {
-        return appointment_date;
+    public LocalDate getAppointmentDate() {
+        return appointmentDate;
     }
 
-    public void setAppointment_date(Date appointment_date) {
-        this.appointment_date = appointment_date;
+    public void setAppointmentDate(LocalDate appointmentDate) {
+        this.appointmentDate = appointmentDate;
     }
 
-    public Time getAppointment_start_time() {
-        return appointment_start_time;
+    public Time getAppointmentStartTime() {
+        return appointmentStartTime;
     }
 
-    public void setAppointment_start_time(Time appointment_start_time) {
-        this.appointment_start_time = appointment_start_time;
+    public void setAppointmentStartTime(Time appointmentStartTime) {
+        this.appointmentStartTime = appointmentStartTime;
     }
 
-    public Time getAppointment_end_time() {
-        return appointment_end_time;
+    public Time getAppointmentEndTime() {
+        return appointmentEndTime;
     }
 
-    public void setAppointment_end_time(Time appointment_end_time) {
-        this.appointment_end_time = appointment_end_time;
+    public void setAppointmentEndTime(Time appointmentEndTime) {
+        this.appointmentEndTime = appointmentEndTime;
     }
 
-    public String getName_of_doctor() {
-//        return name_of_doctor;
-        return doctorName;
+    public String getNameOfDoctor() {
+        return nameOfDoctor;
     }
 
-    public void setName_of_doctor(String doctorName) {
-//        this.name_of_doctor = name_of_doctor;
-        this.doctorName = doctorName;
+    public void setNameOfDoctor(String nameOfDoctor) {
+        this.nameOfDoctor = nameOfDoctor;
     }
 
-    public Status getSelectedStatus() {
-        return selectedStatus;
+    public availableStatus getStatus() {
+        return status;
     }
 
-    public void setSelectedStatus(Status selectedStatus) {
-        this.selectedStatus = selectedStatus;
+    public void setStatus(availableStatus status) {
+        this.status = status;
     }
 
     public BigDecimal getPrice() {

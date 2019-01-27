@@ -4,12 +4,15 @@ import com.example.appointment.model.Appointment;
 import com.example.appointment.repository.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 @Component("appointmentService")
 public class AppointmentServiceImplementation implements AppointmentService {
+
+
+
 
     @Autowired
     AppointmentRepository appointmentRepository;
@@ -19,27 +22,42 @@ public class AppointmentServiceImplementation implements AppointmentService {
     }
 
     @Override
-    public Optional<Appointment> findOneById(Long userId) {
-        return appointmentRepository.findById(userId);
+    public Optional<Appointment> findById(Long appointmentId) {
+        return appointmentRepository.findById(appointmentId);
+
     }
 
     @Override
-    public Optional<Appointment> findOneByDoctorName(String name) {
-        return appointmentRepository.findByDoctorName(name);
+    public List<Appointment> findByDateRangeSortedByPrice(LocalDate startDate, LocalDate endDate) {
+
+
+
+        return appointmentRepository.findAllByAppointmentDateBetweenOrderByPriceAsc(startDate, endDate);
+    }
+
+    @Override
+    public Optional<Appointment> findByDoctorName(String name) {
+        return appointmentRepository.findAllByNameOfDoctor(name);
     }
 
     @Override
     public List<Appointment> findAll() {
         return appointmentRepository.findAll();
+//        return appointmentRepository.findAllOrderByPriceAsc();
     }
 
     @Override
-    public Appointment create(Appointment newUser) {
-        return appointmentRepository.save(newUser);
+    public Appointment create(Appointment appointment) {
+        return appointmentRepository.save(appointment);
     }
 
     @Override
-    public void deleteOneById(Long userId) {
-        appointmentRepository.deleteById(userId);
+    public Appointment update(Long appointmentId, Appointment appointment) {
+        return appointmentRepository.save(appointment);
+    }
+
+    @Override
+    public void deleteById(Long appointmentId) {
+        appointmentRepository.deleteById(appointmentId);
     }
 }
