@@ -1,6 +1,5 @@
 package com.example.appointment.service;
 
-//import com.example.appointment.Exceptions.ResourceNotFoundException;
 import com.example.appointment.model.Appointment;
 import com.example.appointment.model.AppointmentStatus;
 
