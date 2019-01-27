@@ -1,11 +1,14 @@
 package com.example.appointment.controller;
 
+import com.example.appointment.Exceptions.ResourceNotFoundException;
 import com.example.appointment.model.Appointment;
+import com.example.appointment.model.AppointmentStatus;
 import com.example.appointment.service.AppointmentService;
 import org.hibernate.exception.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -54,9 +57,24 @@ public class AppointmentRestController {
     /** PUT request to update appointments **/
     @RequestMapping(path = "/{appointmentId}", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public Appointment update(@RequestBody Appointment appointment, @PathVariable Long appointmentId) {
+    public Appointment update(@PathVariable Long appointmentId, @RequestBody Appointment appointment) {
         return appointmentService.update(appointmentId, appointment);
     }
+
+//    /** PATCH request to update status of an appointment **/
+//    @RequestMapping(path = "/{appointmentId}", method = RequestMethod.PATCH, consumes = "application/json")
+//    @ResponseStatus(HttpStatus.OK)
+//    public String updateStatus(@PathVariable Long appointmentId, @RequestBody Appointment appointment) throws ResourceNotFoundException {
+//
+////        MultiValueMap<String, String> formParams
+////        long id = Long.parseLong(formParams.getFirst("appointmentId"));
+//////        String status = formParams.getFirst("status");
+////        AppointmentStatus status = Enum.valueOf(AppointmentStatus.class, formParams.getFirst("status"));
+////        appointmentService.updateStatus(id, status);
+//
+//        appointmentService.updateStatus(appointmentId, appointment);
+//        return "Status Updated";
+//    }
 
     /** DELETE request to delete specific appointments **/
     @RequestMapping(path = "/{appointmentId}", method = RequestMethod.DELETE)

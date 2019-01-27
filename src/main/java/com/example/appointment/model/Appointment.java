@@ -14,15 +14,13 @@ import java.time.LocalDate;
 @Entity
 public class Appointment {
 
-    private enum availableStatus {Available, Booked};
-
     private @Id @GeneratedValue Long id;
     private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
     private LocalDate appointmentDate;
     private Time appointmentStartTime;
     private Time appointmentEndTime;
     private String nameOfDoctor;
-    private Appointment.availableStatus status = Appointment.availableStatus.Booked;
+    private AppointmentStatus status = AppointmentStatus.Booked;
     private BigDecimal price;
 
     public Appointment() {
@@ -91,11 +89,11 @@ public class Appointment {
         this.nameOfDoctor = nameOfDoctor;
     }
 
-    public availableStatus getStatus() {
+    public AppointmentStatus getStatus() {
         return status;
     }
 
-    public void setStatus(availableStatus status) {
+    public void setStatus(AppointmentStatus status) {
         this.status = status;
     }
 

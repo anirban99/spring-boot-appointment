@@ -1,10 +1,11 @@
 package com.example.appointment.service;
 
+import com.example.appointment.Exceptions.ResourceNotFoundException;
 import com.example.appointment.model.Appointment;
-import org.springframework.stereotype.Service;
+import com.example.appointment.model.AppointmentStatus;
+
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,10 @@ public interface AppointmentService {
     Appointment create(Appointment appointment);
 
     Appointment update(Long appointmentId, Appointment appointment);
+
+//    void updateStatus(Long appointmentId, AppointmentStatus status);
+
+//    void updateStatus(Long appointmentId, Appointment appointment) throws ResourceNotFoundException;
 
     void deleteById(Long appointmentId);
 
