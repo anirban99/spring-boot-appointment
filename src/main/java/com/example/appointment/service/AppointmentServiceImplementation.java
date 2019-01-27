@@ -11,9 +11,6 @@ import java.util.Optional;
 @Component("appointmentService")
 public class AppointmentServiceImplementation implements AppointmentService {
 
-
-
-
     @Autowired
     AppointmentRepository appointmentRepository;
 
@@ -24,26 +21,16 @@ public class AppointmentServiceImplementation implements AppointmentService {
     @Override
     public Optional<Appointment> findById(Long appointmentId) {
         return appointmentRepository.findById(appointmentId);
-
-    }
-
-    @Override
-    public List<Appointment> findByDateRangeSortedByPrice(LocalDate startDate, LocalDate endDate) {
-
-
-
-        return appointmentRepository.findAllByAppointmentDateBetweenOrderByPriceAsc(startDate, endDate);
-    }
-
-    @Override
-    public Optional<Appointment> findByDoctorName(String name) {
-        return appointmentRepository.findAllByNameOfDoctor(name);
     }
 
     @Override
     public List<Appointment> findAll() {
         return appointmentRepository.findAll();
-//        return appointmentRepository.findAllOrderByPriceAsc();
+    }
+
+    @Override
+    public List<Appointment> findByDateRangeSortedByPrice(LocalDate startDate, LocalDate endDate) {
+        return appointmentRepository.findAllByAppointmentDateBetweenOrderByPriceAsc(startDate, endDate);
     }
 
     @Override

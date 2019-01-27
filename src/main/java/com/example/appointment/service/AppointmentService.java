@@ -12,11 +12,9 @@ public interface AppointmentService {
 
     Optional<Appointment> findById(Long appointmentId);
 
-    List<Appointment> findByDateRangeSortedByPrice(LocalDate startDate, LocalDate endDate);
-
-    Optional<Appointment> findByDoctorName(String name);
-
     List<Appointment> findAll();
+
+    List<Appointment> findByDateRangeSortedByPrice(LocalDate startDate, LocalDate endDate);
 
     Appointment create(Appointment appointment);
 
