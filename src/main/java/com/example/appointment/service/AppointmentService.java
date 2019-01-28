@@ -1,7 +1,6 @@
 package com.example.appointment.service;
 
 import com.example.appointment.model.Appointment;
-import com.example.appointment.model.AppointmentStatus;
 
 
 import java.time.LocalDate;
@@ -20,9 +19,7 @@ public interface AppointmentService {
 
     Appointment update(Long appointmentId, Appointment appointment);
 
-//    void updateStatus(Long appointmentId, AppointmentStatus status);
-
-//    void updateStatus(Long appointmentId, Appointment appointment) throws ResourceNotFoundException;
+    Appointment updateStatus(Long appointmentId, Appointment appointment);
 
     void deleteById(Long appointmentId);
 
