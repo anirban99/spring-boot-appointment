@@ -25,11 +25,13 @@ Using Jar file as a packaged applicationv:
 
 **To Run using docker-compose file**
 
-1. mvn clean package
+1. cd /<local_directory>/spring-boot-appointment
 
-2. Build all the services and then run them : docker-compose up --build
+2. mvn clean package
 
-3. To find the running docker images and ports : docker container ps -a
+3. Build all the services and then run them : docker-compose up --build
+
+4. To find the running docker images and ports : docker container ps -a
 
 
 **REST Endpoints**
