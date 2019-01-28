@@ -15,15 +15,21 @@ Using Jar file as a packaged applicationv:
 
 **To Run using Docker file**
 
-cd /<local_directory>/spring-boot-appointment
+1. cd /<local_directory>/spring-boot-appointment
 
-Build the Docker image : docker build -t springboot-appointment-docker .
+2. mvn clean package
 
-Run the Spring Boot application : docker run -p 8080:8080 springboot-appointment-docker
+3. Build the Docker image : docker build -t springboot-appointment-docker .
+
+4. Run the Spring Boot application : docker run -p 8080:8080 springboot-appointment-docker
 
 **To Run using docker-compose file**
 
-Build all the services and then run them : docker-compose up --build
+1. mvn clean package
+
+2. Build all the services and then run them : docker-compose up --build
+
+3. To find the running docker images and ports : docker container ps -a
 
 
 **REST Endpoints**
@@ -84,3 +90,9 @@ Pass Body as JSON:
 7.**DELETE** request to delete specific appointments - /api/v1/appointments/{appointmentId}
 
 http://localhost:PORT/api/v1/appointments/3
+
+**Port Number**
+
+localhost default port number : 8080
+
+docker container port number can be found using : docker container ps -a
