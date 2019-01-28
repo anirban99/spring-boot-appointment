@@ -57,7 +57,7 @@ Pass Body as JSON:
 
 5.**PUT** request to update appointments - /api/v1/appointments/{appointmentId}
 
-http://localhost:PORT/api/v1/appointments/3
+http://localhost:PORT/api/v1/appointments/5
 
 Pass Body as JSON:
 
@@ -73,7 +73,7 @@ Pass Body as JSON:
 
 6.**PATCH** request to update status of an appointment - /api/v1/appointments/{appointmentId}
 
-http://localhost:PORT/api/v1/appointments/3
+http://localhost:PORT/api/v1/appointments/4
 
 Pass Body as JSON:
 
