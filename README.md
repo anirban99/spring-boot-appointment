@@ -98,3 +98,9 @@ http://localhost:PORT/api/v1/appointments/3
 localhost default port number : 8080
 
 docker container port number can be found using : docker container ps -a
+
+**Git Bundle**
+
+To create a git bundle : git bundle create spring-boot-appointment.git master
+
+To extract from a git bundle : git clone -b master spring-boot-appointment.git demo
