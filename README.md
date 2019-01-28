@@ -103,4 +103,4 @@ docker container port number can be found using : docker container ps -a
 
 To create a git bundle : git bundle create spring-boot-appointment.git master
 
-To extract from a git bundle : git clone -b master spring-boot-appointment.git demo
+To extract from a git bundle : git clone -b master spring-boot-appointment.git spring-boot-appointment
