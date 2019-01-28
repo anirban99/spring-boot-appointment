@@ -18,6 +18,9 @@ public class AppointmentRestController {
     @Autowired
     private AppointmentService appointmentService;
 
+    public AppointmentRestController() {
+    }
+
     public AppointmentRestController(AppointmentService appointmentService) {
         this.appointmentService = appointmentService;
     }

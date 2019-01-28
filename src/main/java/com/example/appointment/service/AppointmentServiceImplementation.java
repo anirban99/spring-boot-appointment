@@ -13,6 +13,9 @@ public class AppointmentServiceImplementation implements AppointmentService {
     @Autowired
     AppointmentRepository appointmentRepository;
 
+    public AppointmentServiceImplementation() {
+    }
+
     public AppointmentServiceImplementation(AppointmentRepository appointmentRepository) {
         this.appointmentRepository = appointmentRepository;
     }

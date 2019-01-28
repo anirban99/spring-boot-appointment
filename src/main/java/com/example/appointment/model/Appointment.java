@@ -27,6 +27,16 @@ public class Appointment {
 
     }
 
+    public Appointment(Timestamp createdAt, LocalDate appointmentDate, Time appointmentStartTime, Time appointmentEndTime, String nameOfDoctor, AppointmentStatus status, BigDecimal price) {
+        this.createdAt = createdAt;
+        this.appointmentDate = appointmentDate;
+        this.appointmentStartTime = appointmentStartTime;
+        this.appointmentEndTime = appointmentEndTime;
+        this.nameOfDoctor = nameOfDoctor;
+        this.status = status;
+        this.price = price;
+    }
+
     public Appointment(LocalDate appointmentDate, Time appointmentStartTime, Time appointmentEndTime, String nameOfDoctor, BigDecimal price) {
         this.appointmentDate = appointmentDate;
         this.appointmentStartTime = appointmentStartTime;
